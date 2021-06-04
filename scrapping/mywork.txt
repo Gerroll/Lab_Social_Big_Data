@@ -1,0 +1,71 @@
+API real => Fnac, Darty, Amazone, Ebay => Api pour vendre, payante == NO GO
+
+API fake => trop peu de donnée (de l'ordre de la dizaine) == NO GO
+
+Génération de données (anglais uniquement) => Problème de cohérance, es ce vraiment un problème ??
+
+Scrapping , légalité ...
+
+Google Shooping ?? Hypothèse : peu/pas de contrôle sur la donnée
+
+
+
+
+
+
+
+Catégorie :
+    Livres, BD, Ebooks, Papeterie
+    Billetterie
+    Musique, CD, Vinyles
+    Jeux vidéo, Consoles
+    Films, Séries TV, DVD, Blu-Ray
+    Enfants, Jouets, Bébés
+    Informatique, Tablettes
+    Smartphones & Objets connectés
+    Photo, Caméras, Tirages photo
+    Son, Casques, Enceintes
+    TV, Vidéo, Home cinema
+    Electroménager, Cuisine
+    Beauté, Santé, Forme
+    Mobilité, Sport, Bagagerie
+    Maison, Décoration 
+    Bricolage, Jardin
+    E-cartes & Coffrets cadeaux
+
+Catalogue (champs : example):
+    catégorie     :     Livres, BD, Ebooks, Papeterie
+    title         :     120 activités et jeux pour les 0-6 ans
+    fnacUrl       :     https://livre.fnac.com/a11094446/Evelyne-Allegre-120-activites-et-jeux-pour-les-0-6-ans#int=:NonApplicable|NonApplicable|NonApplicable|11094446|NonApplicable|NonApplicable  
+    descSub       :     Evelyne Allègre (Auteur), Jacqueline Gassier (Auteur) 5 ( 1 )  
+    price         :     19€90
+    imgLink       :     https://static.fnac-static.com/multimedia/Images/FR/NR/cb/2f…tsp20171127120429/105-activites-et-jeux-pour-les-0-6-ans.jpg  
+    review        :     5 / 5
+    reviewNumber  :     1
+
+
+
+
+Résumé des actions possible :
+    20 produits par catégorie (temps pour aller chercher les infos dans le bon format)
+
+    classement par score en prenant la note et le nombre d'avis en compte 
+
+    renvoie des produits les mieux classés de la catégorie 1, 2 et 3 (intérets)
+
+
+
+Ecarté dû aux manques de données :
+    Clustering :
+        Par Utilisateur (regroupement pour determiner le groupe de client auquel l'utilisateur appartient
+            et proposer une recommandation par rapport à ce groupe)
+
+        Par Item (regroupement par article et prediction d'un article proche d'un item déjà acheté)
+
+    Sous catégorie : manque de précision des informations de Pega
+
+    Nom, prénom : Pas utile sauf pour historique
+
+    Age => lien complexe => bcp d'article qui ont pas de limite d'age (Jeu de société maybe)
+
+
