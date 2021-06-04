@@ -1,14 +1,23 @@
+from selenium import webdriver
 import requests
+import time
+from webdriver_manager.chrome import ChromeDriverManager
 
-url = "https://ali-express1.p.rapidapi.com/product/4001084094868/feedback/"
+pageurl = 'https://www.google.com/recaptcha/api2/demo'
 
-querystring = {"country":"us","page":"1","type":"all"}
+driver = webdriver.Chrome(ChromeDriverManager().install())
+driver.get(pageurl)
 
-headers = {
-    'x-rapidapi-key': "a904b3157fmsh2e2e8ac612a46cbp1b7db2jsn36200df8f7e1",
-    'x-rapidapi-host': "ali-express1.p.rapidapi.com"
-    }
+site_key = "6Le-wvkSAAAAAPBMRTvw0Q4Muexq9bi0DJwx_mJ-"
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+with open(r"api_key.txt", "r") as f:
+  api_key = f.read()
 
-print(response.text)
+form = {"method": "userrecaptcha",
+        "googlekey": site_key,
+        "key": api_key, 
+        "pageurl": pageurl, 
+        "json": 1}
+
+response = requests.post('http://2captcha.com/in.php', data=form)
+request_id = response.json()['request']

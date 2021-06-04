@@ -1,5 +1,5 @@
 (function () {
-  class Product {
+  class Product { // TODO ADD CATEGORIE
     title = ""
     fnacUrl = ""
     descSub = ""
@@ -44,6 +44,7 @@
     let price = $(".userPrice", item)
     if (price.length > 0) {
       price = price[0].innerText.trim()
+      price = parseFloat(price.replace("€", "."))
       currentProduct.price = price
       console.log("Price : " + price)
     }
@@ -65,7 +66,7 @@
       }
       currentProduct.review = review
 
-      console.log("Review : " + review + " / 5")
+      console.log("Review : " + review + "/5")
 
       let reviewNumber = $(".f-star--small", item).next().text().trim()
       reviewNumber = reviewNumber.substring(2, reviewNumber.length - 2)
@@ -78,17 +79,20 @@
     console.log("_____________________________________")
   })
 
-  let csvContent = Product.getCsvTitle() + "\r\n"
+  let csvContent = "data:text/csv;charset=utf-8,";
+
+
+  csvContent += Product.getCsvTitle() + "\r\n"
 
   productList.forEach(product => {
     csvContent += product.toCsvFormat() + "\r\n"
   })
 
-  let a = document.createElement('a');
-  a.href = 'data:attachment/csv,' + csvContent;
-  a.target = '_blank';
-  a.download = 'myFile.csv';
-
-  document.body.appendChild(a);
-  a.click();
+  var encodedUri = encodeURI(csvContent);
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "my_data.csv");
+  document.body.appendChild(link); // Required for FF
+  
+  link.click(); // This will download the data file named "my_data.csv".
 })();

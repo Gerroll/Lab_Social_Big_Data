@@ -10,10 +10,6 @@ Google Shooping ?? Hypothèse : peu/pas de contrôle sur la donnée
 
 
 
-
-
-
-
 Catégorie :
     Livres, BD, Ebooks, Papeterie
     Billetterie
@@ -33,6 +29,7 @@ Catégorie :
     Bricolage, Jardin
     E-cartes & Coffrets cadeaux
 
+
 Catalogue (champs : example):
     catégorie     :     Livres, BD, Ebooks, Papeterie
     title         :     120 activités et jeux pour les 0-6 ans
@@ -44,15 +41,12 @@ Catalogue (champs : example):
     reviewNumber  :     1
 
 
-
-
 Résumé des actions possible :
     20 produits par catégorie (temps pour aller chercher les infos dans le bon format)
 
     classement par score en prenant la note et le nombre d'avis en compte 
 
     renvoie des produits les mieux classés de la catégorie 1, 2 et 3 (intérets)
-
 
 
 Ecarté dû aux manques de données :
@@ -69,3 +63,5 @@ Ecarté dû aux manques de données :
     Age => lien complexe => bcp d'article qui ont pas de limite d'age (Jeu de société maybe)
 
 
+Note pour plus tart:
+    Infos supplémentaires par produit ?? (age mini, ... )
