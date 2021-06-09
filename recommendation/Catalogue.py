@@ -14,13 +14,13 @@ class Catalogue(metaclass=Singleton):
         self.df = pd.read_csv("catalogue/catalogue.csv", sep=';')
         self.category_list = self.df["category"].unique()
 
+
     def get_best_products_in_category(self, category_name="Musique, CD, Vinyles", n_product_to_return=1):
         """ Get a list best product in a category based on review score and number of reviewers
 
             Keyword arguments:
             category_name -- category's name where to search
-            n_product_to_return -- number of product to return in the list
-        """
+            n_product_to_return -- number of product to return in the list"""
         products_in_category = self.df.loc[self.df['category'] == category_name]
 
         total_socre_col = products_in_category.apply(self._calculate_total_score, axis=1) # get column data with an index

@@ -1,7 +1,9 @@
 from recommendation.Catalogue import Catalogue
 
+
 def init_recommendation():
     Catalogue()
+
 
 def get_user_recommendation(request):
     body = request.get_json(force=True)
@@ -22,6 +24,7 @@ def get_body_error_recommendation(body):
     if not isinstance(body["interet"], list):
         return set_json_error_msg("Field 'interet' insn't a list")
     return None
+
 
 def set_json_error_msg(message):
     return {

@@ -104,10 +104,15 @@
       currentProduct.reviewNumber = reviewNumber
     }
 
-    // Add product in list
+    // Add Product in list
     productList.push(currentProduct)
   })
 
+
+  /* Convert product list to csv format and download it
+
+    productListToCsv -- list of Product class
+  */
   function downloadProductListAsCsv(productListToCsv) {
     let csvContent = ""
 
@@ -130,5 +135,4 @@
 
   downloadProductListAsCsv(productList)
 
-  // Convert product list to csv format and download it
 })();
