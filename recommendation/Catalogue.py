@@ -11,6 +11,8 @@ class Catalogue(metaclass=Singleton):
 
     def __init__(self):
         print("Loading CSV")
+
+        # Load csv only once on init of the Singleton
         self.df = pd.read_csv("catalogue/catalogue.csv", sep=';')
         self.category_list = self.df["category"].unique()
 
@@ -21,12 +23,16 @@ class Catalogue(metaclass=Singleton):
             Keyword arguments:
             category_name -- category's name where to search
             n_product_to_return -- number of product to return in the list"""
+        # fetch product of only one category
         products_in_category = self.df.loc[self.df['category'] == category_name]
 
-        total_socre_col = products_in_category.apply(self._calculate_total_score, axis=1) # get column data with an index
+        # get column total_score only with an index
+        total_socre_col = products_in_category.apply(self._calculate_total_score, axis=1)
 
-        products_in_category_with_total_score = products_in_category.assign(total_score=total_socre_col.values) # assign values to column 'total_score'
+        # merge dataframe with total_score colmun
+        products_in_category_with_total_score = products_in_category.assign(total_score=total_socre_col.values)
 
+        # sort dataframe by total_score
         sorted_product_list = products_in_category_with_total_score.sort_values(by="total_score", ascending=False)
 
         return sorted_product_list[0 : n_product_to_return]
